@@ -64,7 +64,7 @@ def build() {
 
 def deploy(String environment, int port) {
     echo "Deployment to ${environment} has started.."
-    bat "pm2 start -n "books-${environment}" index.js -- ${port}"
+    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
 def test(String environment) {
