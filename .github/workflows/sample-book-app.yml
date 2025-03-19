@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Print step name
-#        run: echo "Deployment to DEV has started.."
+        run: echo "Deployment to DEV has started.."
 #      - name: Install all dependencies
 #        run: npm install
 #      - name: Delete existing pm2 service
