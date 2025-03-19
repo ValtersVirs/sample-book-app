@@ -47,3 +47,10 @@ Powershell:
 ```
 $env:PORT=2020; pm2 start -n "books-STG" index.js
 ```
+
+Full:
+```
+pm2 start -n "books-DEV" index.js -- 1010
+pm2 start -n "books-STG" index.js -- 2020
+pm2 start -n "books-PRD" index.js -- 3030
+```
