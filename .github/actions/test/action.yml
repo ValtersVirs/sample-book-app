@@ -2,24 +2,23 @@ name: "Deploy node application"
 description: "Composite action to deploy and build out node app"
 inputs:
   environment:
-    description: "Environment where to deploy Sample Book Application"
+    description: "Environment where to execute tests"
     required: true
-  port:
-    description: "Port for our Sample Book Application"
-    required: true
+  test-suite:
+    description: "Testing suite which need to be executed"
+    default: "BOOKS"
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: 'ValtersVirs/api-automation'
     - name: Print step name
-      run: echo "Deployment to ${{ inputs.environment }} has started.."
+      run: echo "Testing ${{ inputs.test-suite }} test set on ${{ inputs.environment }} has started.."
       shell: cmd
     - name: Install all dependencies
       run: npm install
       shell: cmd
-    - name: Delete existing pm2 service
-      run: pm2 delete "books-${{ inputs.environment }}"
-      shell: cmd
-    - name: Run sample-book-app pm2 service
-#     run: $env:PORT=${{ inputs.port }}; pm2 start -n "books-${{ inputs.environment }}" index.js
-      run: pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
+    - name: Run API tests
+      run: npm run ${{ inputs.test-suite }} ${{ inputs.test-suite }}_${{ inputs.environment }}
       shell: cmd
