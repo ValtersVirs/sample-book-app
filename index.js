@@ -34,7 +34,18 @@ app.get('/books/:id', (req, res) => {
 const defaultPort = 1010;
 
 // Get port from command-line argument or use default port
-const port = process.argv[2] || defaultPort;
+//const port = process.argv[2] || defaultPort;
+const portArg = process.env.PORT || process.argv[2];
+const port = portArg || defaultPort;
+
+console.log("test ---------------");
+
+const { argv } = require('node:process');
+
+// print process.argv
+argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
 
 // Start the server
 app.listen(port, () => {

@@ -37,3 +37,13 @@ Remove pm2 service:
 ```
 pm2 delete <id of process>
 ```
+
+Default:
+```
+pm2 start -n "books-STG" index.js -- 2020
+```
+
+Powershell:
+```
+$env:PORT=2020; pm2 start -n "books-STG" index.js
+```
