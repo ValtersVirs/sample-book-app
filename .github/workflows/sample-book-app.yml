@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: '/ValtersVirs/api-automation'
+          repository: 'ValtersVirs/api-automation'
       - name: Print step name
         run: echo "Testing BOOKS test set on DEV has started.."
       - name: Install all dependencies
