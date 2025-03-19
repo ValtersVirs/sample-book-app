@@ -16,6 +16,11 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: "DEV"
+          port: "1010"
+
       - name: Print step name
         run: echo "Deployment to DEV has started.."
       - name: Install all dependencies
@@ -43,6 +48,11 @@ jobs:
     needs: [test-dev]
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: "STG"
+          port: "2020"
+
       - name: Print step name
         run: echo "Deployment to STG has started.."
   test-stg:
@@ -57,6 +67,11 @@ jobs:
     needs: [test-stg]
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: "PRD"
+          port: "3030"
+
       - name: Print step name
         run: echo "Deployment to PRD has started.."
   test-prd:
