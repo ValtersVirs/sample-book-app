@@ -55,7 +55,7 @@ jobs:
           repository: 'ValtersVirs/api-automation'
       - uses: actions/checkout@v4
         with:
-          repository: 'ValtersVirs/sample-book'
+          repository: 'ValtersVirs/sample-book-app'
           path: 'sample-book-app'
           sparse-checkout: |
             .github
@@ -81,7 +81,7 @@ jobs:
           repository: 'ValtersVirs/api-automation'
       - uses: actions/checkout@v4
         with:
-          repository: 'ValtersVirs/sample-book'
+          repository: 'ValtersVirs/sample-book-app'
           path: 'sample-book-app'
           sparse-checkout: |
             .github
