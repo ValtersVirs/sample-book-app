@@ -27,8 +27,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'ValtersVirs/api-automation'
-          ref: 'main'
-      - uses: ./.github/actions/test
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/sample-book'
+          path: 'sample-book-app'
+          sparse-checkout: |
+            .github
+      - uses: ./sample-book-app/.github/actions/test
         with:
           environment: "DEV"
           test-suite: "BOOKS"
@@ -45,7 +50,16 @@ jobs:
     runs-on: self-hosted
     needs: [deploy-stg]
     steps:
-      - uses: ./.github/actions/test
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/api-automation'
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/sample-book'
+          path: 'sample-book-app'
+          sparse-checkout: |
+            .github
+      - uses: ./sample-book-app/.github/actions/test
         with:
           environment: "STG"
           test-suite: "BOOKS"
@@ -62,7 +76,16 @@ jobs:
     runs-on: self-hosted
     needs: [deploy-prd]
     steps:
-      - uses: ./.github/actions/test
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/api-automation'
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/sample-book'
+          path: 'sample-book-app'
+          sparse-checkout: |
+            .github
+      - uses: ./sample-book-app/.github/actions/test
         with:
           environment: "PRD"
           test-suite: "BOOKS"
