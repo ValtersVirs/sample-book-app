@@ -24,6 +24,10 @@ jobs:
     runs-on: self-hosted
     needs: [deploy-dev]
     steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: 'ValtersVirs/api-automation'
+          ref: 'main'
       - uses: ./.github/actions/test
         with:
           environment: "DEV"

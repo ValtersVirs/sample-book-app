@@ -1,5 +1,5 @@
-name: "Deploy node application"
-description: "Composite action to deploy and build out node app"
+name: "Test node application"
+description: "Composite action to test and build out node app"
 inputs:
   environment:
     description: "Environment where to execute tests"
